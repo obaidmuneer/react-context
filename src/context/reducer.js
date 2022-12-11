@@ -1,9 +1,14 @@
 export const reducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
-    case "add":
+    case "ADD_NUM":
       return { ...state, num: state.num + 1 };
-    case "sub":
+    case "SUB_NUM":
       return { ...state, num: state.num - 1 };
+    case "ADD_USER":
+      return { ...state, user: action.payload };
+    case "DARK_MODE":
+      return { ...state, darkMode: !state.darkMode };
     default:
       return state;
   }

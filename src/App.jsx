@@ -1,12 +1,22 @@
+import { GlobalContext } from "./context/context";
+import { useContext } from "react";
 import Counter from "./components/counter";
+import User from "./components/user";
 import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Counter />
-      </header>
+  const { state, dispatch } = useContext(GlobalContext);
+  const darkMode = () => {
+    dispatch({
+      type: "DARK_MODE",
+    });
+    console.log(state.darkMode);
+  };
+  return (  
+    <div className={`App ${state.darkMode ? "App-bg" : ""}`}>
+        <button onClick={darkMode}>Turn {state.darkMode  ? "Off" : "On"} Dark Mode</button>
+        {/* <Counter /> */}
+        <User />
     </div>
   );
 }

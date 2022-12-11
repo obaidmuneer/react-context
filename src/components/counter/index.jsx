@@ -4,11 +4,11 @@ import { useContext } from "react";
 const Counter = () => {
   const { state, dispatch } = useContext(GlobalContext);
   const add = () => {
-    dispatch({ type: "add" });
+    dispatch({ type: "ADD_NUM" });
   };
   const sub = () => {
     dispatch({
-      type: "sub",
+      type: "SUB_NUM",
     });
   };
   return (

@@ -5,7 +5,8 @@ const User = () => {
   const { state, dispatch } = useContext(GlobalContext);
   const [name, setName] = useState("");
 
-  const addUser = () => {
+  const addUser = (e) => {
+    e.preventDefault()
     dispatch({
       type: "ADD_USER",
       payload: {
@@ -16,12 +17,14 @@ const User = () => {
   return (
     <div>
       <h1>User</h1>
-      <input
-        type="text"
-        onChange={(e) => setName(e.target.value)}
-        value={name}
-      />
-      <button onClick={addUser}>Add User</button>
+      <form onSubmit={addUser} >
+        <input
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+        />
+        <button type="submit">Add User</button>
+      </form>
       <p>name : {state?.user?.name}</p>
     </div>
   );
